@@ -7,6 +7,7 @@ window.addEventListener("load", () => {
   localStorage.setItem("shippingPrice", shippingPrice);
   localStorage.setItem("shippingFreePrice", shippingFreePrice);
 
+  //* show chart totals on window load.
   calculateCardPrice();
 });
 
