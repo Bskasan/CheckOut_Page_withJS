@@ -92,12 +92,38 @@ const calculateCardPrice = () => {
     subtotal += parseFloat(div.innerText);
   });
 
-  console.log(subtotal.toFixed(2));
-
   //? Make our calculation more dynamic.
   const taxPrice = subtotal * localStorage.getItem("taxRate");
-  const shippingPrice =
+  const shippingPrice = parseFloat(
     subtotal > 0 && subtotal < localStorage.getItem("shippingFreePrice")
       ? localStorage.getItem("shippingPrice")
-      : 0;
+      : 0
+  );
+
+  const totalPrice = subtotal + taxPrice + shippingPrice;
+
+  console.log(subtotal.toFixed(2));
+  console.log(shippingPrice);
+  console.log(totalPrice);
+
+  //? GET SUB TOTAL
+  document.querySelector("#cart-subtotal").lastElementChild.innerText =
+    toFixedNumTwo(subtotal);
+
+  //? GET TAX PRICE
+  document.getElementById("cart-tax").children[1].innerText =
+    toFixedNumTwo(taxPrice);
+
+  //? GET SHIPPING PRICE
+  document.querySelector("#cart-shipping p:nth-child(2)").innerText =
+    toFixedNumTwo(shippingPrice);
+
+  //? GET TOTAL PRICE
+  document.querySelector("#cart-total p:last-child").innerText =
+    toFixedNumTwo(totalPrice);
 };
+
+//Shortcut function for toFixed(2)
+function toFixedNumTwo(num) {
+  return num.toFixed(2);
+}
