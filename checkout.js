@@ -1,11 +1,11 @@
-//const taxRate = 0.18;
-//const shippingPrice = 15.0;
-//const shippingFreePrice = 300;
+const taxRate = 0.18;
+const shippingPrice = 15.0;
+const shippingFreePrice = 300;
 
 window.addEventListener("load", () => {
-  //localStorage.setItem("taxRate", taxRate);
-  //localStorage.setItem("shippingPrice", shippingPrice);
-  //localStorage.setItem("shippingFreePrice", shippingFreePrice);
+  localStorage.setItem("taxRate", taxRate);
+  localStorage.setItem("shippingPrice", shippingPrice);
+  localStorage.setItem("shippingFreePrice", shippingFreePrice);
 
   calculateCardPrice();
 });
@@ -37,6 +37,10 @@ productsDiv.addEventListener("click", (e) => {
 
 const calculateProductPrice = (target) => {
   //* Product total calculation
+  //? productTotalPrice => quantity * unit price
+
+  const productInfoDiv = target.closest(".product-info");
+  console.log(productInfoDiv);
 };
 
 const calculateCardPrice = () => {
