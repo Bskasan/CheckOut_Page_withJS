@@ -20,15 +20,40 @@ productsDiv.addEventListener("click", (e) => {
   //! alert(e.currentTarget.className);
 
   if (e.target.className == "fa-solid fa-minus") {
-    alert("minus clicked");
-    calculateProductPrice(e.target);
+    //alert("minus clicked");
+
+    if (e.target.nextElementSibling.innerText > 1) {
+      e.target.nextElementSibling.innerText--;
+      calculateProductPrice(e.target);
+    } else {
+      //! innerText vs. textContent (whitespaces)
+      if (
+        confirm(
+          `${
+            e.target.closest(".product-info").querySelector("h2").innerText
+          } will be removed. Are you sure?`
+        )
+      ) {
+        e.target.closest(".product").remove();
+      }
+    }
+
     calculateCardPrice();
   } else if (e.target.classList.contains("fa-plus")) {
     alert("plus btn clicked");
     calculateProductPrice(e.target);
     calculateCardPrice();
   } else if (e.target.getAttribute("class") == "remove-product") {
-    alert("remove btn clicked");
+    //alert("remove btn clicked");
+    if (
+      confirm(
+        `${
+          e.target.closest(".product-info").querySelector("h2").innerText
+        } will be removed. Are you sure?`
+      )
+    ) {
+      e.target.closest(".product").remove();
+    }
     calculateCardPrice();
   } else {
     alert("other element clicked");
