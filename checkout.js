@@ -65,6 +65,9 @@ const calculateProductPrice = (target) => {
   //* Product total calculation
   //? productTotalPrice => quantity * unit price
 
+  const productInfoDiv = target.closest(".product-info");
+  console.log(productInfoDiv);
+
   //? Unit price
   //! div.class vs. .class as performance
   const price = productInfoDiv.querySelector(
@@ -72,10 +75,8 @@ const calculateProductPrice = (target) => {
   ).innerText;
   //? Quantity
   const quantity = productInfoDiv.querySelector("p.quantity").innerText;
-  
-
-  const productInfoDiv = target.closest(".product-info");
-  console.log(productInfoDiv);
+  productInfoDiv.querySelector("div.product-line-price").innerText =
+    (price * quantity).toFixed(2);
 };
 
 const calculateCardPrice = () => {
