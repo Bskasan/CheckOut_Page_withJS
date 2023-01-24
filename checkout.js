@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
 
 const productsDiv = document.querySelector(".products");
 
-//* Capturing ==> Static Parent ---> Childred
+//* Capturing ==> Static Closest Parent ---> Childred
 //* We are trying to catch all click in one addEventListener by using Capturing Method
 productsDiv.addEventListener("click", (e) => {
   //! e.target vs. e.currentTarget
