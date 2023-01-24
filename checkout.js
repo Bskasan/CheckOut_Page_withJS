@@ -75,10 +75,29 @@ const calculateProductPrice = (target) => {
   ).innerText;
   //? Quantity
   const quantity = productInfoDiv.querySelector("p.quantity").innerText;
-  productInfoDiv.querySelector("div.product-line-price").innerText =
-    (price * quantity).toFixed(2);
+  productInfoDiv.querySelector("div.product-line-price").innerText = (
+    price * quantity
+  ).toFixed(2);
 };
 
 const calculateCardPrice = () => {
   //* Cart total calculation from all products
+  //* NodeList
+  const productLinePriceDivs = document.querySelectorAll(".product-line-price");
+  // const productLinePriceDivs = document.getElementsByClassName("product-line-price");
+
+  let subtotal = 0;
+  //? forEach => array + nodeList
+  productLinePriceDivs.forEach((div) => {
+    subtotal += parseFloat(div.innerText);
+  });
+
+  console.log(subtotal.toFixed(2));
+
+  //? Make our calculation more dynamic.
+  const taxPrice = subtotal * localStorage.getItem("taxRate");
+  const shippingPrice =
+    subtotal > 0 && subtotal < localStorage.getItem("shippingFreePrice")
+      ? localStorage.getItem("shippingPrice")
+      : 0;
 };
