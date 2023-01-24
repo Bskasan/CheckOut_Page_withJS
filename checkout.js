@@ -40,7 +40,8 @@ productsDiv.addEventListener("click", (e) => {
 
     calculateCardPrice();
   } else if (e.target.classList.contains("fa-plus")) {
-    alert("plus btn clicked");
+    //alert("plus btn clicked");
+    e.target.parentElement.querySelector(".quantity").innerText++;
     calculateProductPrice(e.target);
     calculateCardPrice();
   } else if (e.target.getAttribute("class") == "remove-product") {
@@ -63,6 +64,15 @@ productsDiv.addEventListener("click", (e) => {
 const calculateProductPrice = (target) => {
   //* Product total calculation
   //? productTotalPrice => quantity * unit price
+
+  //? Unit price
+  //! div.class vs. .class as performance
+  const price = productInfoDiv.querySelector(
+    "div.product-price p strong"
+  ).innerText;
+  //? Quantity
+  const quantity = productInfoDiv.querySelector("p.quantity").innerText;
+  
 
   const productInfoDiv = target.closest(".product-info");
   console.log(productInfoDiv);
